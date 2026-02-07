@@ -1,1 +1,2 @@
-#prueba de creación
+class ReportadorFinanciero:
+    pass
