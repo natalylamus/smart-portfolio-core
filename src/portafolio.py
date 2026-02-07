@@ -30,3 +30,5 @@ class Portafolio:
         Devuelve la lista de posiciones (para consultar).
         """
         return self._posiciones
+
+
