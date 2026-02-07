@@ -28,3 +28,6 @@ class ReportadorFinanciero:
 
         print("-" * 40)
         print(f"Valor total del portafolio: {total}")
+
+
+
