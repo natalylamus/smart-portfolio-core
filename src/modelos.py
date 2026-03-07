@@ -37,3 +37,5 @@ class Posicion:
         return (float(precio_actual) - self.precio_entrada) * self.cantidad
     
     ## con Ajuste modelos punto 2 
+
+    ## Se realiza ajuste
