@@ -101,3 +101,23 @@ def test_remover_posicion_existente(portafolio_vacio, instrumento_test):
     portafolio_vacio.agregar_posicion(posicion)
     portafolio_vacio.remover_posicion(ticker="TSLA")
     assert len(portafolio_vacio.posiciones) == 0
+
+     # ─────────────────────────────────────────────
+# Tests de ReportadorFinanciero
+# ─────────────────────────────────────────────
+from src.reportes import ReportadorFinanciero
+
+def test_imprimir_resumen_portafolio_vacio(portafolio_vacio, capsys):
+    reportador = ReportadorFinanciero()
+    reportador.imprimir_resumen(portafolio_vacio)
+    captured = capsys.readouterr()
+    assert "El portafolio no tiene posiciones" in captured.out
+
+def test_imprimir_resumen_con_posiciones(portafolio_vacio, instrumento_test, capsys):
+    posicion = Posicion(instrumento=instrumento_test, cantidad=5, precio_entrada=100)
+    portafolio_vacio.agregar_posicion(posicion)
+    reportador = ReportadorFinanciero()
+    reportador.imprimir_resumen(portafolio_vacio)
+    captured = capsys.readouterr()
+    assert "TSLA" in captured.out
+    assert "RESUMEN DEL PORTAFOLIO" in captured.out
