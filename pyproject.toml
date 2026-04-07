@@ -3,11 +3,11 @@ name = "smart-portfolio-core"
 version = "0.1.0"
 description = "Proyecto Integrador SmartPortfolio"
 authors = ["Nataly <natalylamusp@gmail.com>"]
- 
+
 packages = [
-    { include = "smart-portfolio-core" }
+    { include = "src" }
 ]
- 
+
 [tool.poetry.dependencies]
 python = "^3.13"
 requests = "^2.32.5"
@@ -19,3 +19,9 @@ dev = [
     "pytest (>=9.0.2,<10.0.0)",
     "pytest-cov (>=7.0.0,<8.0.0)"
 ]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+
+[tool.coverage.run]
+omit = ["src/prueba.py"]
