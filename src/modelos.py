@@ -1,4 +1,4 @@
-
+# src/modelos.py
 from dataclasses import dataclass
 
 
@@ -13,10 +13,9 @@ class Posicion:
     def __init__(self, instrumento: Instrumento, cantidad: float, precio_entrada: float) -> None:
         if not isinstance(instrumento, Instrumento):
             raise TypeError("instrumento debe ser una instancia de Instrumento.")
-
         self.instrumento = instrumento
-        self._cantidad: float = 0.0  
-        self.cantidad = float(cantidad)  
+        self._cantidad: float = 0.0
+        self.cantidad = float(cantidad)
         self.precio_entrada = float(precio_entrada)
 
     @property
@@ -33,5 +32,10 @@ class Posicion:
     def calcular_valor_actual(self, precio_mercado: float) -> float:
         return self.cantidad * float(precio_mercado)
 
+    def calcular_ganancia_no_realizada(self, precio_actual: float) -> float:
+        """Retorna la ganancia (o pérdida) no realizada de la posición."""
+        return (float(precio_actual) - self.precio_entrada) * self.cantidad
+    
+    ## con Ajuste modelos punto 2 
 
-
+    ## Se realiza ajuste
