@@ -38,4 +38,14 @@ class Posicion:
     
     ## con Ajuste modelos punto 2 
 
-    ## Se realiza ajuste
+    ## Se realiza ajuste 
+
+    @property
+    def alerta_riesgo(self) -> bool:
+        """Retorna True si la pérdida supera el 10% del valor de entrada."""
+        valor_entrada = self.precio_entrada * self.cantidad
+        if valor_entrada == 0:
+            return False
+        perdida = self.calcular_ganancia_no_realizada(self.precio_entrada)
+        return perdida < -(valor_entrada * 0.10)
+
